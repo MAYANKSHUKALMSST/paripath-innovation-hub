@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 import AnimatedSection from './AnimatedSection';
-import { Cpu, Code, Smartphone, Brush, Server, Settings, Circuit, Database, RefreshCw } from 'lucide-react';
+import { Cpu, Code, Smartphone, Brush, Server, Settings, CircuitBoard, Database, RefreshCw } from 'lucide-react';
 
 const ServiceCard = ({ icon: Icon, title, description, index }: { icon: any, title: string, description: string, index: number }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -28,7 +28,7 @@ const ServiceCard = ({ icon: Icon, title, description, index }: { icon: any, tit
 
 const services = [
   {
-    icon: Circuit,
+    icon: CircuitBoard,
     title: "Embedded Systems",
     description: "Custom hardware and software solutions for specialized computing tasks with efficient resource utilization."
   },
