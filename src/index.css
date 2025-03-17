@@ -110,13 +110,13 @@
   }
 
   ::selection {
-    @apply bg-paripath/20 text-paripath-dark;
+    @apply bg-paripath/20 text-paripath-dark dark:bg-paripath-dark/30 dark:text-white;
   }
 }
 
 @layer components {
   .glass-card {
-    @apply bg-white bg-opacity-70 backdrop-blur-lg border border-white border-opacity-20 shadow-lg;
+    @apply bg-white bg-opacity-70 backdrop-blur-lg border border-white border-opacity-20 shadow-lg dark:bg-gray-800/70 dark:border-gray-700/30;
   }
   
   .btn-hover-effect {
@@ -125,7 +125,7 @@
   
   .btn-hover-effect:after {
     content: '';
-    @apply absolute inset-0 bg-white bg-opacity-30 scale-x-0 origin-left transition-transform duration-300;
+    @apply absolute inset-0 bg-white bg-opacity-30 scale-x-0 origin-left transition-transform duration-300 dark:bg-black dark:bg-opacity-30;
   }
   
   .btn-hover-effect:hover:after {
