@@ -13,13 +13,13 @@ const ServiceCard = ({ icon: Icon, title, description, index }: { icon: any, tit
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <div className="absolute inset-0 bg-paripath/5 opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-300"></div>
+        <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-300"></div>
         <div className="relative z-10">
-          <div className="w-14 h-14 bg-paripath/10 rounded-xl flex items-center justify-center mb-6 text-paripath transition-all duration-300 group-hover:bg-paripath group-hover:text-white">
+          <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6 text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-white">
             <Icon size={24} />
           </div>
-          <h3 className="text-xl font-semibold mb-3 transition-colors duration-300 group-hover:text-paripath">{title}</h3>
-          <p className="text-gray-600">{description}</p>
+          <h3 className="text-xl font-semibold mb-3 transition-colors duration-300 group-hover:text-primary dark:group-hover:text-primary dark:text-white">{title}</h3>
+          <p className="text-gray-600 dark:text-gray-300">{description}</p>
         </div>
       </div>
     </AnimatedSection>
@@ -71,11 +71,11 @@ const services = [
 
 const Services = () => {
   return (
-    <section id="services" className="section-padding bg-gradient-to-b from-white to-gray-50">
+    <section id="services" className="section-padding bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-950">
       <div className="container mx-auto container-padding">
         <AnimatedSection className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Services</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto text-balance">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 dark:text-white">Our Services</h2>
+          <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto text-balance">
             We offer a comprehensive range of engineering and software development services to help you bring your ideas to life.
           </p>
         </AnimatedSection>

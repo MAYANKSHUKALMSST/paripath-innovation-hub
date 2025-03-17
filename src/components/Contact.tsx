@@ -9,7 +9,7 @@ import { toast } from 'sonner';
 
 const ContactCard = ({ icon: Icon, title, value }: { icon: any, title: string, value: string | React.ReactNode }) => (
   <AnimatedSection className="flex items-start p-5 glass-card rounded-xl">
-    <div className="w-10 h-10 bg-paripath/10 rounded-lg flex items-center justify-center mr-4 text-paripath flex-shrink-0">
+    <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center mr-4 text-primary flex-shrink-0">
       <Icon size={18} />
     </div>
     <div>
@@ -103,7 +103,7 @@ const Contact = () => {
                   <textarea
                     id="message"
                     rows={4}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-paripath focus:border-paripath outline-none transition-all resize-none dark:bg-gray-700 dark:text-white dark:border-gray-600"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-all resize-none dark:bg-gray-700 dark:text-white dark:border-gray-600"
                     placeholder="Tell us about your project or inquiry..."
                     {...register("message", { required: "Message is required" })}
                   ></textarea>
@@ -112,7 +112,7 @@ const Contact = () => {
                 <div>
                   <Button
                     type="submit"
-                    className="w-full px-6 py-3 bg-paripath text-white rounded-lg font-medium hover:bg-paripath-dark transition-colors duration-300"
+                    className="w-full px-6 py-3 bg-primary text-white rounded-lg font-medium hover:bg-primary/90 transition-colors duration-300"
                   >
                     Send Message
                   </Button>
@@ -134,12 +134,12 @@ const Contact = () => {
                 <ContactCard 
                   icon={Mail} 
                   title="Email Address" 
-                  value={<a href="mailto:mayank@paripathsolutions.com" className="text-paripath hover:underline">mayank@paripathsolutions.com</a>} 
+                  value={<a href="mailto:mayank@paripathsolutions.com" className="text-primary hover:underline">mayank@paripathsolutions.com</a>} 
                 />
                 <ContactCard 
                   icon={Phone} 
                   title="Phone Number" 
-                  value={<a href="tel:+918177063899" className="text-paripath hover:underline">+91 8177 063 899</a>} 
+                  value={<a href="tel:+918177063899" className="text-primary hover:underline">+91 8177 063 899</a>} 
                 />
                 <ContactCard 
                   icon={Clock} 
@@ -149,7 +149,7 @@ const Contact = () => {
               </div>
             </AnimatedSection>
 
-            <AnimatedSection delay={300} className="bg-paripath text-white rounded-xl shadow-sm p-8">
+            <AnimatedSection delay={300} className="bg-primary text-white rounded-xl shadow-sm p-8">
               <h3 className="text-xl font-semibold mb-4">Visit Our Website</h3>
               <p className="mb-4 opacity-90">
                 For more information about our services and portfolio, visit our website.
@@ -158,7 +158,7 @@ const Contact = () => {
                 href="https://paripathsolutions.com" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="inline-block px-6 py-2 bg-white text-paripath rounded-lg font-medium hover:bg-gray-100 transition-colors duration-300"
+                className="inline-block px-6 py-2 bg-white text-primary rounded-lg font-medium hover:bg-gray-100 transition-colors duration-300"
               >
                 paripathsolutions.com
               </a>

@@ -58,7 +58,7 @@
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
     --primary-foreground: 222.2 47.4% 11.2%;
 
     --secondary: 217.2 32.6% 17.5%;
@@ -110,13 +110,13 @@
   }
 
   ::selection {
-    @apply bg-paripath/20 text-paripath-dark dark:bg-paripath-dark/30 dark:text-white;
+    @apply bg-primary/20 text-primary-foreground dark:bg-primary/30 dark:text-white;
   }
 }
 
 @layer components {
   .glass-card {
-    @apply bg-white bg-opacity-70 backdrop-blur-lg border border-white border-opacity-20 shadow-lg dark:bg-gray-800/70 dark:border-gray-700/30;
+    @apply bg-white/70 backdrop-blur-lg border border-white/20 shadow-lg dark:bg-gray-800/70 dark:border-gray-700/30;
   }
   
   .btn-hover-effect {

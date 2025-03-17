@@ -64,7 +64,7 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				paripath: {
-					light: '#f8f9fa',
+					light: '#f0f7ff',
 					DEFAULT: '#0056b3',
 					dark: '#003366'
 				}
