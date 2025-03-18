@@ -70,7 +70,7 @@ const Navbar = () => {
               className="ml-2 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-800"
               aria-label="Toggle theme"
             >
-              {theme === 'light' ? <Moon size={18} /> : <Sun size={18} />}
+              {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
             </Button>
 
             {/* Auth Buttons */}
@@ -97,7 +97,7 @@ const Navbar = () => {
               className="text-gray-700 dark:text-gray-300"
               aria-label="Toggle theme"
             >
-              {theme === 'light' ? <Moon size={18} /> : <Sun size={18} />}
+              {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
             </Button>
             
             <button
