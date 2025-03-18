@@ -150,17 +150,17 @@ const Contact = () => {
             </AnimatedSection>
 
             <AnimatedSection delay={300} className="bg-primary text-white rounded-xl shadow-sm p-8">
-              <h3 className="text-xl font-semibold mb-4">Visit Our Website</h3>
+              <h3 className="text-xl font-semibold mb-4">Developer Profile</h3>
               <p className="mb-4 opacity-90">
-                For more information about our services and portfolio, visit our website.
+                Connect with me on LinkedIn to learn more about my professional experience and projects.
               </p>
               <a 
-                href="https://paripathsolutions.com" 
+                href="https://www.linkedin.com/in/mayank-shukla-24086112a/" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="inline-block px-6 py-2 bg-white text-primary rounded-lg font-medium hover:bg-gray-100 transition-colors duration-300"
               >
-                paripathsolutions.com
+                LinkedIn Profile
               </a>
             </AnimatedSection>
           </div>
