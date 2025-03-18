@@ -81,7 +81,7 @@ const Navbar = () => {
             </Link>
             
             <Link to="/sign-up">
-              <Button className="bg-paripath text-white flex items-center gap-1.5 hover:bg-paripath-dark">
+              <Button className="bg-paripath text-white flex items-center gap-1.5 hover:bg-paripath-dark dark:bg-paripath-light dark:text-gray-900 dark:hover:bg-paripath-light/90">
                 <UserPlus size={16} /> Sign Up
               </Button>
             </Link>
@@ -136,7 +136,7 @@ const Navbar = () => {
               </Link>
               
               <Link to="/sign-up" onClick={toggleMenu}>
-                <Button className="w-full justify-center bg-paripath text-white flex items-center gap-2">
+                <Button className="w-full justify-center bg-paripath text-white flex items-center gap-2 dark:bg-paripath-light dark:text-gray-900">
                   <UserPlus size={18} /> Sign Up
                 </Button>
               </Link>
