@@ -15,24 +15,83 @@ const ServiceCard = ({ icon: Icon, title, description, index, imageSrc }: {
   return (
     <AnimatedSection delay={index * 100} className={`stagger-reveal-delay-${index + 1}`}>
       <div
-        className="relative h-full p-8 rounded-xl glass-card transition-all duration-300 group overflow-hidden"
+        className="relative h-full p-8 rounded-xl glass-card transition-all duration-500 group overflow-hidden transform-style-3d"
+        style={{ 
+          transformStyle: 'preserve-3d',
+          transform: isHovered ? 'perspective(1000px) rotateX(5deg) rotateY(5deg) translateZ(20px)' : 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)'
+        }}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        {/* Background Image */}
-        <div className="absolute inset-0 opacity-10 group-hover:opacity-15 transition-opacity duration-300">
+        {/* Background Image with Parallax Effect */}
+        <div 
+          className="absolute inset-0 opacity-10 group-hover:opacity-15 transition-opacity duration-500"
+          style={{
+            transform: isHovered ? 'translateZ(-20px)' : 'translateZ(0)',
+            transition: 'transform 0.5s ease-out'
+          }}
+        >
           <img src={imageSrc} alt={title} className="w-full h-full object-cover" />
         </div>
         
-        <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-300"></div>
+        <div 
+          className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-500"
+          style={{
+            transform: 'translateZ(10px)',
+          }}
+        ></div>
         
-        <div className="relative z-10">
-          <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6 text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-white">
+        <div 
+          className="relative z-10"
+          style={{
+            transform: isHovered ? 'translateZ(30px)' : 'translateZ(0)',
+            transition: 'transform 0.5s ease-out'
+          }}
+        >
+          <div 
+            className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6 text-primary transition-all duration-500 group-hover:bg-primary group-hover:text-white"
+            style={{
+              transform: isHovered ? 'translateZ(40px) scale(1.1)' : 'translateZ(0) scale(1)',
+              transition: 'transform 0.5s ease-out, background-color 0.5s ease-out, color 0.5s ease-out'
+            }}
+          >
             <Icon size={24} />
           </div>
-          <h3 className="text-xl font-semibold mb-3 transition-colors duration-300 group-hover:text-primary dark:group-hover:text-primary dark:text-white">{title}</h3>
-          <p className="text-gray-600 dark:text-gray-300">{description}</p>
+          <h3 
+            className="text-xl font-semibold mb-3 transition-colors duration-500 group-hover:text-primary dark:group-hover:text-primary dark:text-white"
+            style={{
+              transform: isHovered ? 'translateZ(20px)' : 'translateZ(0)',
+              transition: 'transform 0.5s ease-out, color 0.5s ease-out'
+            }}
+          >
+            {title}
+          </h3>
+          <p 
+            className="text-gray-600 dark:text-gray-300"
+            style={{
+              transform: isHovered ? 'translateZ(15px)' : 'translateZ(0)',
+              transition: 'transform 0.5s ease-out'
+            }}
+          >
+            {description}
+          </p>
         </div>
+        
+        {/* 3D decorative elements */}
+        <div 
+          className="absolute -bottom-3 -right-3 w-16 h-16 rounded-full bg-primary/5 opacity-0 group-hover:opacity-100"
+          style={{
+            transform: isHovered ? 'translateZ(5px)' : 'translateZ(0)',
+            transition: 'transform 0.5s ease-out, opacity 0.5s ease-out'
+          }}
+        ></div>
+        <div 
+          className="absolute -top-2 -left-2 w-10 h-10 rounded-full bg-primary/5 opacity-0 group-hover:opacity-100"
+          style={{
+            transform: isHovered ? 'translateZ(8px)' : 'translateZ(0)',
+            transition: 'transform 0.5s ease-out, opacity 0.5s ease-out'
+          }}
+        ></div>
       </div>
     </AnimatedSection>
   );

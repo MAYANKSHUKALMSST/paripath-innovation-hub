@@ -1,6 +1,73 @@
 
 import { ChevronDown } from 'lucide-react';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { 
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import { CircuitBoard, Database, Code, Smartphone, RefreshCw, Server, Settings, Cpu } from 'lucide-react';
+
+const services = [
+  {
+    icon: CircuitBoard,
+    title: "Embedded Systems",
+    description: "Specialized computing solutions with efficient resource utilization",
+    color: "bg-blue-500/20",
+    textColor: "text-blue-500"
+  },
+  {
+    icon: Database,
+    title: "Machine Learning",
+    description: "Intelligent algorithms that analyze data patterns with accuracy",
+    color: "bg-purple-500/20",
+    textColor: "text-purple-500"
+  },
+  {
+    icon: Code,
+    title: "Web Development",
+    description: "Modern responsive websites with cutting-edge frameworks",
+    color: "bg-indigo-500/20",
+    textColor: "text-indigo-500"
+  },
+  {
+    icon: Smartphone,
+    title: "App Development",
+    description: "Cross-platform mobile applications with exceptional UX",
+    color: "bg-green-500/20",
+    textColor: "text-green-500"
+  },
+  {
+    icon: RefreshCw,
+    title: "Drone Development",
+    description: "Custom drone solutions with advanced control systems",
+    color: "bg-amber-500/20",
+    textColor: "text-amber-500"
+  },
+  {
+    icon: Server,
+    title: "PCB Designing",
+    description: "Expert PCB design from concept to production",
+    color: "bg-rose-500/20",
+    textColor: "text-rose-500"
+  },
+  {
+    icon: Settings,
+    title: "IoT Product Design",
+    description: "End-to-end IoT solutions for smart decision-making",
+    color: "bg-cyan-500/20",
+    textColor: "text-cyan-500"
+  },
+  {
+    icon: Cpu,
+    title: "Firmware Development",
+    description: "Reliable firmware that powers hardware with precision",
+    color: "bg-teal-500/20",
+    textColor: "text-teal-500"
+  }
+];
 
 const Hero = () => {
   const handleScrollDown = () => {
@@ -10,61 +77,54 @@ const Hero = () => {
     }
   };
 
-  // Interactive 3D cube effect
-  const cubeRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
   
+  // Parallax effect for cards
   useEffect(() => {
-    const cube = cubeRef.current;
-    if (!cube) return;
-    
-    let rotateX = 0;
-    let rotateY = 0;
-    let lastMouseX = 0;
-    let lastMouseY = 0;
-    let isMouseDown = false;
+    const container = containerRef.current;
+    if (!container) return;
     
     const handleMouseMove = (e: MouseEvent) => {
-      if (!isMouseDown) return;
+      const cards = container.querySelectorAll('.service-card');
+      const rect = container.getBoundingClientRect();
+      const mouseX = e.clientX - rect.left;
+      const mouseY = e.clientY - rect.top;
       
-      const deltaX = e.clientX - lastMouseX;
-      const deltaY = e.clientY - lastMouseY;
-      
-      rotateY += deltaX * 0.5;
-      rotateX -= deltaY * 0.5;
-      
-      cube.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-      
-      lastMouseX = e.clientX;
-      lastMouseY = e.clientY;
+      cards.forEach((card) => {
+        const cardRect = card.getBoundingClientRect();
+        const cardCenterX = cardRect.left + cardRect.width / 2 - rect.left;
+        const cardCenterY = cardRect.top + cardRect.height / 2 - rect.top;
+        
+        const deltaX = mouseX - cardCenterX;
+        const deltaY = mouseY - cardCenterY;
+        
+        // Calculate rotation based on mouse position
+        const rotateX = deltaY * 0.03;
+        const rotateY = -deltaX * 0.03;
+        
+        // Apply rotation with diminishing effect based on distance
+        const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+        const maxDistance = Math.sqrt(rect.width * rect.width + rect.height * rect.height) / 2;
+        const factor = 1 - Math.min(distance / maxDistance, 1);
+        
+        card.setAttribute('style', `transform: perspective(1000px) rotateX(${rotateX * factor}deg) rotateY(${rotateY * factor}deg) translateZ(10px);`);
+      });
     };
     
-    const handleMouseDown = (e: MouseEvent) => {
-      isMouseDown = true;
-      lastMouseX = e.clientX;
-      lastMouseY = e.clientY;
+    const handleMouseLeave = () => {
+      const cards = container.querySelectorAll('.service-card');
+      cards.forEach((card) => {
+        card.setAttribute('style', 'transform: perspective(1000px) rotateX(0) rotateY(0) translateZ(0); transition: transform 0.5s ease-out;');
+      });
     };
     
-    const handleMouseUp = () => {
-      isMouseDown = false;
-    };
-    
-    document.addEventListener('mousemove', handleMouseMove);
-    cube.addEventListener('mousedown', handleMouseDown);
-    document.addEventListener('mouseup', handleMouseUp);
-    
-    // Auto rotation when not interacting
-    const autoRotate = setInterval(() => {
-      if (!isMouseDown) {
-        rotateY += 0.5;
-        cube.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-      }
-    }, 50);
+    container.addEventListener('mousemove', handleMouseMove);
+    container.addEventListener('mouseleave', handleMouseLeave);
     
     return () => {
-      document.removeEventListener('mousemove', handleMouseMove);
-      cube.removeEventListener('mousedown', handleMouseDown);
-      document.removeEventListener('mouseup', handleMouseUp);
-      clearInterval(autoRotate);
+      container.removeEventListener('mousemove', handleMouseMove);
+      container.removeEventListener('mouseleave', handleMouseLeave);
     };
   }, []);
 
@@ -116,47 +176,69 @@ const Hero = () => {
               </div>
             </div>
             
-            {/* 3D Cube */}
-            <div className="flex-1 flex justify-center">
-              <div className="w-64 h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 relative perspective-1000 cursor-grab">
-                <div 
-                  ref={cubeRef}
-                  className="w-full h-full transform-style-3d transition-transform duration-500 ease-out"
-                  style={{ 
-                    transformStyle: 'preserve-3d', 
-                    transform: 'rotateX(0deg) rotateY(0deg)'
+            {/* 3D Service Carousel */}
+            <div className="flex-1 py-8">
+              <div 
+                ref={containerRef}
+                className="relative perspective-1200 w-full h-80 flex items-center justify-center"
+              >
+                <Carousel 
+                  className="w-full max-w-md"
+                  opts={{
+                    align: "center",
+                    loop: true
+                  }}
+                  onSelect={(api) => {
+                    if (api) {
+                      setActiveIndex(api.selectedScrollSnap());
+                    }
                   }}
                 >
-                  {/* Front face */}
-                  <div className="absolute w-full h-full flex items-center justify-center bg-paripath/20 backdrop-blur-sm border border-white/30 shadow-xl transform" style={{ transform: 'translateZ(8rem)' }}>
-                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80" alt="Engineering" className="w-2/3 h-2/3 object-cover rounded-lg opacity-90" />
-                  </div>
+                  <CarouselContent>
+                    {services.map((service, index) => (
+                      <CarouselItem key={index} className="md:basis-4/5">
+                        <div 
+                          className={`service-card h-64 p-6 rounded-xl glass-card border border-white/20 backdrop-blur-sm transition-all duration-300 ${service.color} flex flex-col justify-center`}
+                          style={{ 
+                            transformStyle: 'preserve-3d',
+                            transition: 'transform 0.5s ease-out'
+                          }}
+                        >
+                          <div className="transform -translate-z-4 relative z-10">
+                            <div className={`w-16 h-16 ${service.color} bg-opacity-30 rounded-full flex items-center justify-center mb-6 ${service.textColor} mx-auto`}>
+                              <service.icon size={32} className="relative z-10" />
+                            </div>
+                            
+                            <h3 className={`text-xl font-semibold mb-3 ${service.textColor} text-center`}>
+                              {service.title}
+                            </h3>
+                            
+                            <p className="text-gray-700 text-center">
+                              {service.description}
+                            </p>
+                            
+                            {/* 3D floating elements */}
+                            <div className="absolute -top-4 -right-4 w-12 h-12 rounded-full opacity-60 blur-sm bg-white/30 animate-float" style={{ animationDelay: '0.5s' }}></div>
+                            <div className="absolute -bottom-6 -left-6 w-16 h-16 rounded-full opacity-40 blur-sm bg-white/20 animate-float" style={{ animationDelay: '1.3s' }}></div>
+                          </div>
+                        </div>
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
                   
-                  {/* Back face */}
-                  <div className="absolute w-full h-full flex items-center justify-center bg-blue-700/20 backdrop-blur-sm border border-white/30 shadow-xl transform" style={{ transform: 'translateZ(-8rem) rotateY(180deg)' }}>
-                    <div className="text-xl font-bold text-blue-700">Innovative Solutions</div>
+                  <div className="flex justify-center mt-4">
+                    <CarouselPrevious className="relative static translate-y-0 -left-0 mr-2 bg-white/50 backdrop-blur-sm hover:bg-white/70" />
+                    <div className="flex space-x-1 px-2">
+                      {services.map((_, index) => (
+                        <div 
+                          key={index}
+                          className={`w-2 h-2 rounded-full transition-all duration-300 ${activeIndex === index ? 'bg-paripath w-4' : 'bg-gray-300'}`}
+                        ></div>
+                      ))}
+                    </div>
+                    <CarouselNext className="relative static translate-y-0 -right-0 ml-2 bg-white/50 backdrop-blur-sm hover:bg-white/70" />
                   </div>
-                  
-                  {/* Left face */}
-                  <div className="absolute w-full h-full flex items-center justify-center bg-paripath/10 backdrop-blur-sm border border-white/30 shadow-xl transform" style={{ transform: 'rotateY(-90deg) translateZ(8rem)' }}>
-                    <div className="text-xl font-bold text-paripath">Engineering Excellence</div>
-                  </div>
-                  
-                  {/* Right face */}
-                  <div className="absolute w-full h-full flex items-center justify-center bg-blue-500/10 backdrop-blur-sm border border-white/30 shadow-xl transform" style={{ transform: 'rotateY(90deg) translateZ(8rem)' }}>
-                    <div className="text-xl font-bold text-blue-500">Tomorrow's Technology</div>
-                  </div>
-                  
-                  {/* Top face */}
-                  <div className="absolute w-full h-full flex items-center justify-center bg-indigo-500/10 backdrop-blur-sm border border-white/30 shadow-xl transform" style={{ transform: 'rotateX(90deg) translateZ(8rem)' }}>
-                    <div className="text-xl font-bold text-indigo-500">Cutting Edge</div>
-                  </div>
-                  
-                  {/* Bottom face */}
-                  <div className="absolute w-full h-full flex items-center justify-center bg-indigo-700/10 backdrop-blur-sm border border-white/30 shadow-xl transform" style={{ transform: 'rotateX(-90deg) translateZ(8rem)' }}>
-                    <div className="text-xl font-bold text-indigo-700">Paripath Solutions</div>
-                  </div>
-                </div>
+                </Carousel>
               </div>
             </div>
           </div>
