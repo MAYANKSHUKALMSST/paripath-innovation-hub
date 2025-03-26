@@ -143,6 +143,47 @@
   .container-padding {
     @apply px-6 md:px-12 lg:px-16;
   }
+  
+  /* 3D Styling */
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  
+  .transform-style-3d {
+    transform-style: preserve-3d;
+  }
+  
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+  
+  .card-3d {
+    @apply relative transition-transform duration-500 shadow-xl;
+    transform: translateZ(0);
+  }
+  
+  .card-3d:hover {
+    transform: translateY(-10px) translateZ(20px);
+  }
+  
+  .btn-3d {
+    @apply relative transform transition-transform duration-300 ease-out shadow-md;
+    transform: translateZ(0);
+  }
+  
+  .btn-3d:hover {
+    transform: translateY(-2px) translateZ(5px);
+    @apply shadow-lg;
+  }
+  
+  .card-3d-rotate {
+    @apply relative transition-all duration-500;
+    transform: perspective(1000px) rotateX(0) rotateY(0);
+  }
+  
+  .card-3d-rotate:hover {
+    transform: perspective(1000px) rotateX(5deg) rotateY(5deg);
+  }
 }
 
 .reveal-on-scroll {
@@ -174,4 +215,25 @@
 
 .stagger-reveal-delay-5 {
   transition-delay: 0.5s;
+}
+
+/* 3D Transform Utilities */
+.rotate-3d {
+  transition: transform 0.5s ease;
+}
+
+.rotate-3d:hover {
+  transform: rotate3d(1, 1, 0, 15deg);
+}
+
+.tilt-3d {
+  transition: transform 0.5s ease;
+}
+
+.tilt-3d:hover {
+  transform: perspective(1000px) rotateX(10deg);
+}
+
+.parallax-layer {
+  will-change: transform;
 }

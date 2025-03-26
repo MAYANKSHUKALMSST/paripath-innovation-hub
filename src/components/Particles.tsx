@@ -5,10 +5,13 @@ import { useTheme } from '@/contexts/ThemeContext';
 interface Particle {
   x: number;
   y: number;
+  z: number;
   size: number;
   speedX: number;
   speedY: number;
+  speedZ: number;
   color: string;
+  opacity: number;
 }
 
 const Particles = () => {
@@ -24,6 +27,7 @@ const Particles = () => {
     
     const particles: Particle[] = [];
     const particleCount = 80;
+    const perspectiveDepth = 500;
     
     // Set canvas to full screen
     const resizeCanvas = () => {
@@ -33,8 +37,8 @@ const Particles = () => {
     
     // Create particles
     const createParticles = () => {
-      const lightModeColors = ['rgba(59, 130, 246, 0.5)', 'rgba(99, 102, 241, 0.3)', 'rgba(139, 92, 246, 0.3)'];
-      const darkModeColors = ['rgba(59, 130, 246, 0.3)', 'rgba(99, 102, 241, 0.2)', 'rgba(139, 92, 246, 0.2)'];
+      const lightModeColors = ['rgba(59, 130, 246, 0.7)', 'rgba(99, 102, 241, 0.5)', 'rgba(139, 92, 246, 0.5)'];
+      const darkModeColors = ['rgba(59, 130, 246, 0.5)', 'rgba(99, 102, 241, 0.4)', 'rgba(139, 92, 246, 0.4)'];
       
       const colors = theme === 'dark' ? darkModeColors : lightModeColors;
       
@@ -42,27 +46,50 @@ const Particles = () => {
         particles.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          size: Math.random() * 3 + 1,
+          z: Math.random() * perspectiveDepth - perspectiveDepth/2,
+          size: Math.random() * 4 + 1,
           speedX: (Math.random() - 0.5) * 0.5,
           speedY: (Math.random() - 0.5) * 0.5,
-          color: colors[Math.floor(Math.random() * colors.length)]
+          speedZ: (Math.random() - 0.5) * 0.5,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          opacity: Math.random() * 0.8 + 0.2
         });
       }
+    };
+    
+    // Calculate particle size based on z position for perspective
+    const calculateSize = (particle: Particle) => {
+      // Create a perspective effect
+      const perspective = perspectiveDepth / (perspectiveDepth + particle.z);
+      return particle.size * perspective;
     };
     
     // Draw particles
     const drawParticles = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
+      // Sort particles by z position to create proper layering
+      particles.sort((a, b) => b.z - a.z);
+      
       particles.forEach((particle, index) => {
-        ctx.fillStyle = particle.color;
+        const size = calculateSize(particle);
+        
+        // Extract RGB values from rgba string
+        const rgba = particle.color.match(/\d+/g);
+        if (!rgba) return;
+        
+        // Calculate opacity based on z position
+        const opacity = (particle.opacity * (perspectiveDepth + particle.z) / (2 * perspectiveDepth)).toFixed(2);
+        
+        ctx.fillStyle = `rgba(${rgba[0]}, ${rgba[1]}, ${rgba[2]}, ${opacity})`;
         ctx.beginPath();
-        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+        ctx.arc(particle.x, particle.y, size, 0, Math.PI * 2);
         ctx.fill();
         
         // Update particle position
         particle.x += particle.speedX;
         particle.y += particle.speedY;
+        particle.z += particle.speedZ;
         
         // Bounce off edges
         if (particle.x < 0 || particle.x > canvas.width) {
@@ -71,6 +98,10 @@ const Particles = () => {
         
         if (particle.y < 0 || particle.y > canvas.height) {
           particle.speedY *= -1;
+        }
+        
+        if (particle.z < -perspectiveDepth/2 || particle.z > perspectiveDepth/2) {
+          particle.speedZ *= -1;
         }
         
         // Connect particles with lines
@@ -85,14 +116,18 @@ const Particles = () => {
       for (let i = index + 1; i < particles.length; i++) {
         const dx = particle.x - particles[i].x;
         const dy = particle.y - particles[i].y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
+        const dz = particle.z - particles[i].z;
+        const distance = Math.sqrt(dx * dx + dy * dy + dz * dz);
         
         if (distance < maxDistance) {
           const opacity = 1 - distance / maxDistance;
+          // Calculate line width based on Z position for depth perception
+          const lineWidth = 1.5 * (perspectiveDepth + particle.z) / (2 * perspectiveDepth);
+          
           ctx.strokeStyle = theme === 'dark' 
-            ? `rgba(255, 255, 255, ${opacity * 0.15})` 
-            : `rgba(0, 0, 0, ${opacity * 0.1})`;
-          ctx.lineWidth = 1;
+            ? `rgba(255, 255, 255, ${opacity * 0.20})` 
+            : `rgba(0, 0, 0, ${opacity * 0.15})`;
+          ctx.lineWidth = lineWidth;
           ctx.beginPath();
           ctx.moveTo(particle.x, particle.y);
           ctx.lineTo(particles[i].x, particles[i].y);
@@ -122,7 +157,7 @@ const Particles = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-0 opacity-60"
+      className="fixed inset-0 pointer-events-none z-0 opacity-70"
     />
   );
 };
