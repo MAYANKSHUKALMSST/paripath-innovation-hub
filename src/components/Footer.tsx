@@ -1,31 +1,32 @@
+
 import { Facebook, Twitter, Instagram, Linkedin, Github } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   
   return (
-    <footer className="bg-gray-900 text-white pt-16 pb-8">
+    <footer className="text-gray-800 pt-16 pb-8 border-t border-gray-100">
       <div className="container mx-auto container-padding">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           <div>
             <h3 className="text-xl font-bold mb-6">Paripath Solutions</h3>
-            <p className="text-gray-400 mb-6">
+            <p className="text-gray-600 mb-6">
               Innovative engineering solutions for tomorrow's challenges. We specialize in embedded systems, machine learning, and custom software development.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300">
+              <a href="#" className="text-gray-500 hover:text-paripath transition-colors duration-300">
                 <Facebook size={20} />
               </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300">
+              <a href="#" className="text-gray-500 hover:text-paripath transition-colors duration-300">
                 <Twitter size={20} />
               </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300">
+              <a href="#" className="text-gray-500 hover:text-paripath transition-colors duration-300">
                 <Instagram size={20} />
               </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300">
+              <a href="#" className="text-gray-500 hover:text-paripath transition-colors duration-300">
                 <Linkedin size={20} />
               </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300">
+              <a href="#" className="text-gray-500 hover:text-paripath transition-colors duration-300">
                 <Github size={20} />
               </a>
             </div>
@@ -43,7 +44,7 @@ const Footer = () => {
                 "PCB Designing"
               ].map((service, index) => (
                 <li key={index}>
-                  <a href="#services" className="text-gray-400 hover:text-white transition-colors duration-300">
+                  <a href="#services" className="text-gray-600 hover:text-paripath transition-colors duration-300">
                     {service}
                   </a>
                 </li>
@@ -63,7 +64,7 @@ const Footer = () => {
                 { name: "Terms of Service", href: "#" }
               ].map((link, index) => (
                 <li key={index}>
-                  <a href={link.href} className="text-gray-400 hover:text-white transition-colors duration-300">
+                  <a href={link.href} className="text-gray-600 hover:text-paripath transition-colors duration-300">
                     {link.name}
                   </a>
                 </li>
@@ -73,20 +74,20 @@ const Footer = () => {
           
           <div>
             <h3 className="text-lg font-semibold mb-6">Contact Us</h3>
-            <ul className="space-y-3 text-gray-400">
+            <ul className="space-y-3 text-gray-600">
               <li>Lucknow, Uttar Pradesh, India</li>
               <li>
-                <a href="mailto:mayank@paripathsolutions.com" className="hover:text-white transition-colors duration-300">
+                <a href="mailto:mayank@paripathsolutions.com" className="hover:text-paripath transition-colors duration-300">
                   mayank@paripathsolutions.com
                 </a>
               </li>
               <li>
-                <a href="tel:+911234567890" className="hover:text-white transition-colors duration-300">
+                <a href="tel:+918177063899" className="hover:text-paripath transition-colors duration-300">
                   +91 8177063899
                 </a>
               </li>
               <li>
-                <a href="https://paripathsolutions.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors duration-300">
+                <a href="https://paripathsolutions.com" target="_blank" rel="noopener noreferrer" className="hover:text-paripath transition-colors duration-300">
                   paripathsolutions.com
                 </a>
               </li>
@@ -94,19 +95,19 @@ const Footer = () => {
           </div>
         </div>
         
-        <div className="border-t border-gray-800 pt-8">
+        <div className="border-t border-gray-100 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 text-sm mb-4 md:mb-0">
+            <p className="text-gray-600 text-sm mb-4 md:mb-0">
               © {currentYear} Paripath Solutions. All rights reserved.
             </p>
             <div className="flex space-x-6">
-              <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors duration-300">
+              <a href="#" className="text-gray-600 hover:text-paripath text-sm transition-colors duration-300">
                 Privacy Policy
               </a>
-              <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors duration-300">
+              <a href="#" className="text-gray-600 hover:text-paripath text-sm transition-colors duration-300">
                 Terms of Service
               </a>
-              <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors duration-300">
+              <a href="#" className="text-gray-600 hover:text-paripath text-sm transition-colors duration-300">
                 Site Map
               </a>
             </div>

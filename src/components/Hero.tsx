@@ -11,16 +11,8 @@ const Hero = () => {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-0 left-0 w-full h-full bg-[url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=2000&q=80')] bg-cover bg-center opacity-10"></div>
-        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-transparent to-transparent"></div>
-      </div>
+      {/* Background elements - removed */}
       
-      {/* Floating elements */}
-      <div className="hidden lg:block absolute -top-10 right-36 w-64 h-64 bg-paripath opacity-5 rounded-full filter blur-3xl animate-float"></div>
-      <div className="hidden lg:block absolute top-1/3 -left-24 w-80 h-80 bg-blue-200 opacity-10 rounded-full filter blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
-
       <div className="container mx-auto container-padding">
         <div className="max-w-5xl mx-auto">
           <div className="flex flex-col items-center text-center mb-8">
