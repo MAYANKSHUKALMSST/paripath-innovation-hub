@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from 'react';
-import { Menu, X, Sun, Moon, LogIn, UserPlus } from 'lucide-react';
+import { Menu, X, LogIn, UserPlus } from 'lucide-react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { Button } from './ui/button';
 import { Link } from 'react-router-dom';
@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { theme, toggleTheme } = useTheme();
+  const { theme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -62,17 +62,6 @@ const Navbar = () => {
               </a>
             ))}
             
-            {/* Theme Toggle */}
-            <Button 
-              variant="ghost" 
-              size="icon" 
-              onClick={toggleTheme}
-              className="ml-2 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-800"
-              aria-label="Toggle theme"
-            >
-              {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-            </Button>
-            
             {/* Auth Buttons */}
             <Link to="/sign-in">
               <Button variant="ghost" className="flex items-center gap-1.5 text-gray-700 dark:text-gray-300">
@@ -88,18 +77,7 @@ const Navbar = () => {
           </nav>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center space-x-2">
-            {/* Theme Toggle for Mobile */}
-            <Button 
-              variant="ghost" 
-              size="icon" 
-              onClick={toggleTheme}
-              className="text-gray-700 dark:text-gray-300"
-              aria-label="Toggle theme"
-            >
-              {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-            </Button>
-            
+          <div className="md:hidden flex items-center">
             <button
               className="text-gray-700 dark:text-gray-300 focus:outline-none"
               onClick={toggleMenu}
