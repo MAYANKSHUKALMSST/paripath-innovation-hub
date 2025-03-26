@@ -23,7 +23,6 @@ const Contact = () => {
 
   const onSubmit = async (data: any) => {
     try {
-      // This is just a simulation - replace with actual API call
       await new Promise(resolve => setTimeout(resolve, 1000));
       toast.success("Message sent successfully! We'll get back to you soon.");
       reset();
@@ -33,7 +32,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="section-padding bg-gray-50 dark:bg-gray-900">
+    <section id="contact" className="section-padding bg-transparent">
       <div className="container mx-auto container-padding">
         <AnimatedSection className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 dark:text-white">Get in Touch</h2>
@@ -43,7 +42,6 @@ const Contact = () => {
         </AnimatedSection>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Contact Form */}
           <div className="lg:col-span-2">
             <AnimatedSection delay={100} className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-8">
               <h3 className="text-xl font-semibold mb-6 dark:text-white">Send us a message</h3>
@@ -120,7 +118,6 @@ const Contact = () => {
             </AnimatedSection>
           </div>
 
-          {/* Contact Info */}
           <div className="space-y-6">
             <AnimatedSection delay={200} className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-8">
               <h3 className="text-xl font-semibold mb-6 dark:text-white">Contact Information</h3>

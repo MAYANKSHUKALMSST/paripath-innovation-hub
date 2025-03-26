@@ -91,7 +91,7 @@ const services = [
 
 const Services = () => {
   return (
-    <section id="services" className="section-padding bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-950">
+    <section id="services" className="section-padding bg-transparent">
       <div className="container mx-auto container-padding">
         <AnimatedSection className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 dark:text-white">Our Services</h2>
