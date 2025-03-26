@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import AnimatedSection from './AnimatedSection';
 import { Cpu, Code, Smartphone, Server, Settings, CircuitBoard, Database, RefreshCw } from 'lucide-react';
@@ -14,10 +15,17 @@ const ServiceCard = ({ icon: Icon, title, description, index, imageSrc }: {
   return (
     <AnimatedSection delay={index * 100} className={`stagger-reveal-delay-${index + 1}`}>
       <div
-        className="relative h-full p-8 rounded-xl border border-gray-100 shadow-sm bg-transparent transition-all duration-300 group overflow-hidden"
+        className="relative h-full p-8 rounded-xl glass-card transition-all duration-300 group overflow-hidden"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
+        {/* Background Image */}
+        <div className="absolute inset-0 opacity-10 group-hover:opacity-15 transition-opacity duration-300">
+          <img src={imageSrc} alt={title} className="w-full h-full object-cover" />
+        </div>
+        
+        <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 rounded-xl transition-opacity duration-300"></div>
+        
         <div className="relative z-10">
           <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6 text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-white">
             <Icon size={24} />

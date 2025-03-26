@@ -14,7 +14,7 @@ const StatCard = ({ icon: Icon, value, label }: { icon: any, value: string, labe
 
 const About = () => {
   return (
-    <section id="about" className="section-padding bg-transparent">
+    <section id="about" className="section-padding bg-white">
       <div className="container mx-auto container-padding">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="relative">
@@ -34,7 +34,7 @@ const About = () => {
               </div>
             </AnimatedSection>
             
-            <AnimatedSection delay={200} className="absolute -bottom-12 -right-12 p-6 border border-gray-100 rounded-xl shadow-lg bg-transparent hidden lg:block">
+            <AnimatedSection delay={200} className="absolute -bottom-12 -right-12 p-6 glass-card rounded-xl shadow-lg hidden lg:block">
               <div className="flex items-center space-x-4">
                 <div className="w-12 h-12 bg-paripath rounded-full flex items-center justify-center text-white">
                   <Zap size={20} />
@@ -57,7 +57,7 @@ const About = () => {
                 Whether you need embedded systems for industrial applications, machine learning models for data analysis, or custom software development, we have the expertise to bring your ideas to life. Our commitment to quality and continuous improvement drives everything we do.
               </p>
               
-              <div className="bg-transparent border border-gray-100 rounded-xl p-6 mb-8">
+              <div className="bg-gray-50 rounded-xl p-6 mb-8">
                 <h3 className="text-xl font-semibold mb-4">Our Approach</h3>
                 <ul className="space-y-3">
                   {[
@@ -81,7 +81,7 @@ const About = () => {
         
         <div className="mt-20">
           <AnimatedSection delay={200}>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center bg-transparent rounded-xl shadow-sm border border-gray-100">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center bg-white rounded-xl shadow-sm border border-gray-100">
               <StatCard icon={Award} value="5+" label="Years Experience" />
               <StatCard icon={Users} value="100+" label="Satisfied Clients" />
               <StatCard icon={Globe} value="25+" label="Global Partners" />
