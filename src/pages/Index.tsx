@@ -37,7 +37,7 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="flex flex-col min-h-screen overflow-hidden bg-transparent">
+    <div className="flex flex-col min-h-screen overflow-hidden">
       <Particles />
       <Navbar />
       <main className="flex-grow">
