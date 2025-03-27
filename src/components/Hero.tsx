@@ -1,3 +1,4 @@
+
 import { ChevronDown } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { 
@@ -6,9 +7,9 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-  type CarouselApi
 } from "@/components/ui/carousel";
 import { CircuitBoard, Database, Code, Smartphone, RefreshCw, Server, Settings, Cpu } from 'lucide-react';
+import type { CarouselApi } from "embla-carousel-react";
 
 const services = [
   {
@@ -81,6 +82,7 @@ const Hero = () => {
   const [carouselApi, setCarouselApi] = useState<CarouselApi>();
   const containerRef = useRef<HTMLDivElement>(null);
   
+  // Update active index when carousel changes
   useEffect(() => {
     if (!carouselApi) return;
     
@@ -90,6 +92,7 @@ const Hero = () => {
     
     carouselApi.on("select", onChange);
     
+    // Initialize active index
     setActiveIndex(carouselApi.selectedScrollSnap());
     
     return () => {
@@ -97,6 +100,7 @@ const Hero = () => {
     };
   }, [carouselApi]);
   
+  // Parallax effect for cards
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
@@ -115,9 +119,11 @@ const Hero = () => {
         const deltaX = mouseX - cardCenterX;
         const deltaY = mouseY - cardCenterY;
         
+        // Calculate rotation based on mouse position
         const rotateX = deltaY * 0.03;
         const rotateY = -deltaX * 0.03;
         
+        // Apply rotation with diminishing effect based on distance
         const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
         const maxDistance = Math.sqrt(rect.width * rect.width + rect.height * rect.height) / 2;
         const factor = 1 - Math.min(distance / maxDistance, 1);
@@ -144,11 +150,13 @@ const Hero = () => {
 
   return (
     <section id="home" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+      {/* Background elements */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-0 left-0 w-full h-full bg-[url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=2000&q=80')] bg-cover bg-center opacity-10"></div>
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-transparent to-transparent"></div>
       </div>
       
+      {/* Floating elements */}
       <div className="hidden lg:block absolute -top-10 right-36 w-64 h-64 bg-paripath opacity-5 rounded-full filter blur-3xl animate-float"></div>
       <div className="hidden lg:block absolute top-1/3 -left-24 w-80 h-80 bg-blue-200 opacity-10 rounded-full filter blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
 
@@ -188,6 +196,7 @@ const Hero = () => {
               </div>
             </div>
             
+            {/* 3D Service Carousel */}
             <div className="flex-1 py-8">
               <div 
                 ref={containerRef}
@@ -199,7 +208,7 @@ const Hero = () => {
                     align: "center",
                     loop: true
                   }}
-                  setApi={setCarouselApi}
+                  onApiChange={setCarouselApi}
                 >
                   <CarouselContent>
                     {services.map((service, index) => (
@@ -224,6 +233,7 @@ const Hero = () => {
                               {service.description}
                             </p>
                             
+                            {/* 3D floating elements */}
                             <div className="absolute -top-4 -right-4 w-12 h-12 rounded-full opacity-60 blur-sm bg-white/30 animate-float" style={{ animationDelay: '0.5s' }}></div>
                             <div className="absolute -bottom-6 -left-6 w-16 h-16 rounded-full opacity-40 blur-sm bg-white/20 animate-float" style={{ animationDelay: '1.3s' }}></div>
                           </div>
@@ -251,6 +261,7 @@ const Hero = () => {
         </div>
       </div>
 
+      {/* Scroll down indicator */}
       <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 cursor-pointer animate-bounce shadow-md rounded-full p-2 bg-white/20 backdrop-blur-sm" onClick={handleScrollDown}>
         <ChevronDown className="text-paripath" size={30} />
       </div>
