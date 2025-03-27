@@ -1,3 +1,4 @@
+
 import * as React from "react"
 import useEmblaCarousel, {
   type UseEmblaCarouselType,
@@ -17,6 +18,8 @@ type CarouselProps = {
   plugins?: CarouselPlugin
   orientation?: "horizontal" | "vertical"
   setApi?: (api: CarouselApi) => void
+  autoplay?: boolean
+  delayMs?: number
 }
 
 type CarouselContextProps = {
@@ -26,6 +29,8 @@ type CarouselContextProps = {
   scrollNext: () => void
   canScrollPrev: boolean
   canScrollNext: boolean
+  autoplay?: boolean
+  delayMs?: number
 } & CarouselProps
 
 const CarouselContext = React.createContext<CarouselContextProps | null>(null)
@@ -52,6 +57,8 @@ const Carousel = React.forwardRef<
       plugins,
       className,
       children,
+      autoplay = false,
+      delayMs = 3000,
       ...props
     },
     ref
@@ -82,6 +89,20 @@ const Carousel = React.forwardRef<
     const scrollNext = React.useCallback(() => {
       api?.scrollNext()
     }, [api])
+
+    // Auto-play functionality
+    React.useEffect(() => {
+      if (!api || !autoplay) return;
+      
+      const intervalId = setInterval(() => {
+        api.scrollNext();
+        if (!api.canScrollNext()) {
+          api.scrollTo(0); // Loop back to start when reaching the end
+        }
+      }, delayMs);
+      
+      return () => clearInterval(intervalId);
+    }, [api, autoplay, delayMs]);
 
     const handleKeyDown = React.useCallback(
       (event: React.KeyboardEvent<HTMLDivElement>) => {
@@ -130,6 +151,8 @@ const Carousel = React.forwardRef<
           scrollNext,
           canScrollPrev,
           canScrollNext,
+          autoplay,
+          delayMs
         }}
       >
         <div

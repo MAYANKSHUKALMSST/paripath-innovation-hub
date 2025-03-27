@@ -16,56 +16,64 @@ const services = [
     title: "Embedded Systems",
     description: "Specialized computing solutions with efficient resource utilization",
     color: "bg-blue-500/20",
-    textColor: "text-blue-500"
+    textColor: "text-blue-700",
+    iconColor: "text-blue-600"
   },
   {
     icon: Database,
     title: "Machine Learning",
     description: "Intelligent algorithms that analyze data patterns with accuracy",
     color: "bg-purple-500/20",
-    textColor: "text-purple-500"
+    textColor: "text-purple-700",
+    iconColor: "text-purple-600"
   },
   {
     icon: Code,
     title: "Web Development",
     description: "Modern responsive websites with cutting-edge frameworks",
     color: "bg-indigo-500/20",
-    textColor: "text-indigo-500"
+    textColor: "text-indigo-700",
+    iconColor: "text-indigo-600"
   },
   {
     icon: Smartphone,
     title: "App Development",
     description: "Cross-platform mobile applications with exceptional UX",
     color: "bg-green-500/20",
-    textColor: "text-green-500"
+    textColor: "text-green-700",
+    iconColor: "text-green-600"
   },
   {
     icon: RefreshCw,
     title: "Drone Development",
     description: "Custom drone solutions with advanced control systems",
     color: "bg-amber-500/20",
-    textColor: "text-amber-500"
+    textColor: "text-amber-700",
+    iconColor: "text-amber-600"
   },
   {
     icon: Server,
     title: "PCB Designing",
     description: "Expert PCB design from concept to production",
     color: "bg-rose-500/20",
-    textColor: "text-rose-500"
+    textColor: "text-rose-700",
+    iconColor: "text-rose-600"
   },
   {
     icon: Settings,
     title: "IoT Product Design",
     description: "End-to-end IoT solutions for smart decision-making",
     color: "bg-cyan-500/20",
-    textColor: "text-cyan-500"
+    textColor: "text-cyan-700",
+    iconColor: "text-cyan-600"
   },
   {
     icon: Cpu,
     title: "Firmware Development",
     description: "Reliable firmware that powers hardware with precision",
     color: "bg-teal-500/20",
-    textColor: "text-teal-500"
+    textColor: "text-teal-700",
+    iconColor: "text-teal-600"
   }
 ];
 
@@ -188,9 +196,13 @@ const Hero = () => {
                     align: "center",
                     loop: true
                   }}
-                  onSelect={(api) => {
+                  autoplay={true}
+                  delayMs={4000}
+                  setApi={(api) => {
                     if (api) {
-                      setActiveIndex(api.selectedScrollSnap());
+                      api.on('select', () => {
+                        setActiveIndex(api.selectedScrollSnap());
+                      });
                     }
                   }}
                 >
@@ -205,7 +217,7 @@ const Hero = () => {
                           }}
                         >
                           <div className="transform -translate-z-4 relative z-10">
-                            <div className={`w-16 h-16 ${service.color} bg-opacity-30 rounded-full flex items-center justify-center mb-6 ${service.textColor} mx-auto`}>
+                            <div className={`w-16 h-16 ${service.color} rounded-full flex items-center justify-center mb-6 ${service.iconColor} mx-auto`}>
                               <service.icon size={32} className="relative z-10" />
                             </div>
                             
