@@ -9,6 +9,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { CircuitBoard, Database, Code, Smartphone, RefreshCw, Server, Settings, Cpu } from 'lucide-react';
+import type { CarouselApi } from "embla-carousel-react";
 
 const services = [
   {
@@ -78,7 +79,26 @@ const Hero = () => {
   };
 
   const [activeIndex, setActiveIndex] = useState(0);
+  const [carouselApi, setCarouselApi] = useState<CarouselApi>();
   const containerRef = useRef<HTMLDivElement>(null);
+  
+  // Update active index when carousel changes
+  useEffect(() => {
+    if (!carouselApi) return;
+    
+    const onChange = () => {
+      setActiveIndex(carouselApi.selectedScrollSnap());
+    };
+    
+    carouselApi.on("select", onChange);
+    
+    // Initialize active index
+    setActiveIndex(carouselApi.selectedScrollSnap());
+    
+    return () => {
+      carouselApi.off("select", onChange);
+    };
+  }, [carouselApi]);
   
   // Parallax effect for cards
   useEffect(() => {
@@ -188,11 +208,7 @@ const Hero = () => {
                     align: "center",
                     loop: true
                   }}
-                  onSelect={(api) => {
-                    if (api) {
-                      setActiveIndex(api.selectedScrollSnap());
-                    }
-                  }}
+                  onApiChange={setCarouselApi}
                 >
                   <CarouselContent>
                     {services.map((service, index) => (
