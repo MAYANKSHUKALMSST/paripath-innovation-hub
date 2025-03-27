@@ -1,3 +1,4 @@
+
 import { Facebook, Twitter, Instagram, Linkedin, Github } from 'lucide-react';
 
 const Footer = () => {
@@ -81,7 +82,12 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="tel:+911234567890" className="hover:text-white transition-colors duration-300">
+                <a href="mailto:mayankshukla.ms.st@gmail.com" className="hover:text-white transition-colors duration-300">
+                  mayankshukla.ms.st@gmail.com
+                </a>
+              </li>
+              <li>
+                <a href="tel:+918177063899" className="hover:text-white transition-colors duration-300">
                   +91 8177063899
                 </a>
               </li>

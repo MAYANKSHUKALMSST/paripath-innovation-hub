@@ -1,3 +1,4 @@
+
 import AnimatedSection from './AnimatedSection';
 import { MapPin, Mail, Phone, Clock } from 'lucide-react';
 import { Input } from './ui/input';
@@ -130,7 +131,12 @@ const Contact = () => {
                 <ContactCard 
                   icon={Mail} 
                   title="Email Address" 
-                  value={<a href="mailto:mayank@paripathsolutions.com" className="text-primary hover:underline">mayank@paripathsolutions.com</a>} 
+                  value={
+                    <div className="space-y-1">
+                      <a href="mailto:mayank@paripathsolutions.com" className="text-primary hover:underline block">mayank@paripathsolutions.com</a>
+                      <a href="mailto:mayankshukla.ms.st@gmail.com" className="text-primary hover:underline block">mayankshukla.ms.st@gmail.com</a>
+                    </div>
+                  } 
                 />
                 <ContactCard 
                   icon={Phone} 
