@@ -60,8 +60,8 @@ const Footer = () => {
                 { name: "About Us", href: "#about" },
                 { name: "Services", href: "#services" },
                 { name: "Contact", href: "#contact" },
-                { name: "Privacy Policy", href: "#" },
-                { name: "Terms of Service", href: "#" }
+                { name: "Privacy Policy", href: "/privacy-policy" },
+                { name: "Terms of Service", href: "/terms-of-service" }
               ].map((link, index) => (
                 <li key={index}>
                   <a href={link.href} className="text-gray-400 hover:text-white transition-colors duration-300">
@@ -106,10 +106,10 @@ const Footer = () => {
               © {currentYear} Paripath Solutions. All rights reserved.
             </p>
             <div className="flex space-x-6">
-              <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors duration-300">
+              <a href="/privacy-policy" className="text-gray-400 hover:text-white text-sm transition-colors duration-300">
                 Privacy Policy
               </a>
-              <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors duration-300">
+              <a href="/terms-of-service" className="text-gray-400 hover:text-white text-sm transition-colors duration-300">
                 Terms of Service
               </a>
               <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors duration-300">
