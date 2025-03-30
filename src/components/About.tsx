@@ -1,4 +1,3 @@
-
 import AnimatedSection from './AnimatedSection';
 import { Award, Users, Globe, Zap } from 'lucide-react';
 
@@ -81,10 +80,8 @@ const About = () => {
         
         <div className="mt-20">
           <AnimatedSection delay={200}>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center bg-white rounded-xl shadow-sm border border-gray-100">
-              <StatCard icon={Award} value="5+" label="Years Experience" />
+            <div className="grid grid-cols-2 gap-6 text-center bg-white rounded-xl shadow-sm border border-gray-100">
               <StatCard icon={Users} value="100+" label="Satisfied Clients" />
-              <StatCard icon={Globe} value="25+" label="Global Partners" />
               <StatCard icon={Zap} value="150+" label="Completed Projects" />
             </div>
           </AnimatedSection>
