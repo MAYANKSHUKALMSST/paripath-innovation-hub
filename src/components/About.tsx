@@ -1,3 +1,4 @@
+
 import AnimatedSection from './AnimatedSection';
 import { Award, Users, Globe, Zap } from 'lucide-react';
 
@@ -49,14 +50,22 @@ const About = () => {
           <div>
             <AnimatedSection delay={100}>
               <h2 className="text-3xl md:text-4xl font-bold mb-6">About Paripath Solutions</h2>
-              <p className="text-gray-600 mb-6 text-balance">
-                At Paripath Solutions, we combine engineering expertise with innovative thinking to solve complex technical challenges. Based in Lucknow, our team of skilled engineers and developers works across multiple disciplines to deliver solutions that are reliable, efficient, and forward-thinking.
-              </p>
-              <p className="text-gray-600 mb-8 text-balance">
-                Whether you need embedded systems for industrial applications, machine learning models for data analysis, or custom software development, we have the expertise to bring your ideas to life. Our commitment to quality and continuous improvement drives everything we do.
-              </p>
+              <div className="space-y-4 text-gray-600">
+                <p className="text-balance">
+                  At Paripath Solutions, we are committed to empowering businesses by providing innovative, cost-effective, and sustainable digital solutions. Founded with a vision to increase the digital presence of every business, we specialize in a wide range of services including Embedded Systems, Drone Development, App Development, Website Development, PCB Designing, and IoT Product Design.
+                </p>
+                <p className="text-balance">
+                  Our mission is simple – to help MSMEs (Micro, Small, and Medium Enterprises) establish and enhance their digital presence. We understand the challenges that startups, small businesses, and enterprises face in a rapidly evolving digital world. That's why we offer unique services tailored to meet the specific needs of our clients while ensuring affordability and high-quality results.
+                </p>
+                <p className="text-balance">
+                  Driven by a customer-centric approach, Paripath Solutions prides itself on offering solutions that are not only innovative but also scalable and sustainable. Whether it's creating a digital presence from scratch or advancing an existing one, our team is dedicated to making sure that businesses of all sizes can thrive in the digital era.
+                </p>
+                <p className="text-balance">
+                  We believe that technology should empower every business, and our aim is to bring the digital world closer to you, helping you reach new heights of success.
+                </p>
+              </div>
               
-              <div className="bg-gray-50 rounded-xl p-6 mb-8">
+              <div className="bg-gray-50 rounded-xl p-6 mt-8">
                 <h3 className="text-xl font-semibold mb-4">Our Approach</h3>
                 <ul className="space-y-3">
                   {[
