@@ -50,18 +50,9 @@ const About = () => {
           <div>
             <AnimatedSection delay={100}>
               <h2 className="text-3xl md:text-4xl font-bold mb-6">About Paripath Solutions</h2>
-              <div className="space-y-4 text-gray-600">
+              <div className="text-gray-600 mb-8">
                 <p className="text-balance">
-                  At Paripath Solutions, we are committed to empowering businesses by providing innovative, cost-effective, and sustainable digital solutions. Founded with a vision to increase the digital presence of every business, we specialize in a wide range of services including Embedded Systems, Drone Development, App Development, Website Development, PCB Designing, and IoT Product Design.
-                </p>
-                <p className="text-balance">
-                  Our mission is simple – to help MSMEs (Micro, Small, and Medium Enterprises) establish and enhance their digital presence. We understand the challenges that startups, small businesses, and enterprises face in a rapidly evolving digital world. That's why we offer unique services tailored to meet the specific needs of our clients while ensuring affordability and high-quality results.
-                </p>
-                <p className="text-balance">
-                  Driven by a customer-centric approach, Paripath Solutions prides itself on offering solutions that are not only innovative but also scalable and sustainable. Whether it's creating a digital presence from scratch or advancing an existing one, our team is dedicated to making sure that businesses of all sizes can thrive in the digital era.
-                </p>
-                <p className="text-balance">
-                  We believe that technology should empower every business, and our aim is to bring the digital world closer to you, helping you reach new heights of success.
+                  At Paripath Solutions, we are committed to empowering businesses by providing innovative, cost-effective, and sustainable digital solutions. Founded with a vision to increase the digital presence of every business, we specialize in a wide range of services including Embedded Systems, Drone Development, App Development, Website Development, PCB Designing, and IoT Product Design. Our mission is simple – to help MSMEs (Micro, Small, and Medium Enterprises) establish and enhance their digital presence. We understand the challenges that startups, small businesses, and enterprises face in a rapidly evolving digital world. That's why we offer unique services tailored to meet the specific needs of our clients while ensuring affordability and high-quality results. Driven by a customer-centric approach, Paripath Solutions prides itself on offering solutions that are not only innovative but also scalable and sustainable. Whether it's creating a digital presence from scratch or advancing an existing one, our team is dedicated to making sure that businesses of all sizes can thrive in the digital era. We believe that technology should empower every business, and our aim is to bring the digital world closer to you, helping you reach new heights of success.
                 </p>
               </div>
               
