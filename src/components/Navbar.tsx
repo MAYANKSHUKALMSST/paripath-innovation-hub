@@ -4,6 +4,7 @@ import { Menu, X, LogIn, UserPlus } from 'lucide-react';
 import { useTheme } from '@/contexts/ThemeContext';
 import { Button } from './ui/button';
 import { Link } from 'react-router-dom';
+import ThemeToggle from './ThemeToggle';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -62,6 +63,9 @@ const Navbar = () => {
               </a>
             ))}
             
+            {/* Theme Toggle */}
+            <ThemeToggle />
+            
             {/* Auth Buttons */}
             <Link to="/sign-in">
               <Button variant="ghost" className="flex items-center gap-1.5 text-gray-700 dark:text-gray-300">
@@ -78,8 +82,9 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
+            <ThemeToggle />
             <button
-              className="text-gray-700 dark:text-gray-300 focus:outline-none"
+              className="text-gray-700 dark:text-gray-300 focus:outline-none ml-2"
               onClick={toggleMenu}
               aria-label="Toggle menu"
             >
