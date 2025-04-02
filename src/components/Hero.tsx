@@ -164,7 +164,7 @@ const Hero = () => {
                 </span> for Tomorrow
               </h1>
               
-              <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto md:mx-0 mb-10 text-balance animate-fade-in">
+              <p className="text-lg md:text-xl text-black-600 max-w-3xl mx-auto md:mx-0 mb-10 text-balance animate-fade-in">
                 From embedded systems to drone technology, Paripath Solutions delivers cutting-edge engineering and software development services tailored to transform your ideas into reality.
               </p>
               
