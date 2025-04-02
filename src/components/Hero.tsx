@@ -140,8 +140,8 @@ const Hero = () => {
     <section id="home" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute top-0 left-0 w-full h-full bg-[url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=2000&q=80')] bg-cover bg-center opacity-60"></div>
-       
+        <div className="absolute top-0 left-0 w-full h-full bg-[url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=2000&q=80')] bg-cover bg-center opacity-70"></div>
+       <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-transparent to-transparent"></div>
       </div>
       
       {/* Floating elements */}
