@@ -12,12 +12,12 @@ const ThemeToggle = () => {
       size="icon"
       onClick={toggleTheme}
       aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-      className="rounded-full hover:bg-gray-200 dark:hover:bg-gray-800"
+      className="rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors"
     >
       {theme === 'light' ? (
         <Moon className="h-[1.2rem] w-[1.2rem]" />
       ) : (
-        <Sun className="h-[1.2rem] w-[1.2rem]" />
+        <Sun className="h-[1.2rem] w-[1.2rem] text-yellow-300" />
       )}
       <span className="sr-only">Toggle theme</span>
     </Button>

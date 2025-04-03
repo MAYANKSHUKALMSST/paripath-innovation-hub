@@ -15,8 +15,15 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     // Check if theme is saved in localStorage
     const savedTheme = localStorage.getItem('theme') as Theme;
     
-    // Default to light mode, only use dark if explicitly saved as dark
-    return savedTheme === 'dark' ? 'dark' : 'light';
+    // Check if system prefers dark mode
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    // Use saved theme if available, otherwise use system preference
+    if (savedTheme) {
+      return savedTheme;
+    } else {
+      return prefersDark ? 'dark' : 'light';
+    }
   });
 
   useEffect(() => {
@@ -31,6 +38,9 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       document.documentElement.classList.add('light');
       document.documentElement.classList.remove('dark');
     }
+
+    // Also set a data attribute for additional CSS targeting
+    document.documentElement.setAttribute('data-theme', theme);
   }, [theme]);
 
   const toggleTheme = () => {
