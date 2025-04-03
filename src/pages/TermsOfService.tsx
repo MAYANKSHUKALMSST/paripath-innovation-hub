@@ -1,7 +1,7 @@
-
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useEffect } from "react";
+import { FileText } from "lucide-react";
 
 const TermsOfService = () => {
   useEffect(() => {
@@ -14,10 +14,13 @@ const TermsOfService = () => {
       <Navbar />
       <main className="flex-grow container mx-auto py-12 px-4 md:px-6 lg:py-16">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-3xl md:text-4xl font-bold mb-8">Terms of Service</h1>
-          <p className="text-sm text-gray-500 mb-8">Last Updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+          <div className="flex items-center gap-3 mb-4">
+            <FileText className="h-6 w-6 text-primary" />
+            <h1 className="text-3xl md:text-4xl font-bold">Terms of Service</h1>
+          </div>
+          <p className="text-sm text-muted-foreground mb-8">Last Updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
 
-          <div className="space-y-8">
+          <div className="space-y-8 text-foreground">
             <section>
               <h2 className="text-2xl font-semibold mb-4">1. Introduction</h2>
               <p className="mb-3">
@@ -71,8 +74,6 @@ const TermsOfService = () => {
                 <li>Attempt to gain unauthorized access to, interfere with, damage, or disrupt any parts of the Services</li>
                 <li>Use the Services for any illegal or unauthorized purpose</li>
                 <li>Engage in any conduct that restricts or inhibits anyone's use or enjoyment of the Services</li>
-                <li>Use the Services to advertise or offer to sell goods and services, except as explicitly authorized by us</li>
-                <li>Copy, modify, distribute, sell, or lease any part of our Services</li>
               </ul>
             </section>
 
@@ -80,22 +81,19 @@ const TermsOfService = () => {
               <h2 className="text-2xl font-semibold mb-4">4. Intellectual Property</h2>
               <h3 className="text-xl font-medium mb-2">4.1 Our Intellectual Property</h3>
               <p className="mb-3">
-                The Services and their entire contents, features, and functionality (including but not limited to all information, software, text, displays, images, video, and audio, and the design, selection, and arrangement thereof) are owned by Paripath Solutions, its licensors, or other providers and are protected by copyright, trademark, patent, trade secret, and other intellectual property or proprietary rights laws.
-              </p>
-              <p className="mb-3">
-                These Terms do not grant you any right, title, or interest in the Services, others' content in the Services, Paripath Solutions trademarks, logos and other brand features.
+                The Services and their entire contents, features, and functionality are owned by Paripath Solutions, its licensors, or other providers and are protected by intellectual property laws. These Terms do not grant you any right, title, or interest in the Services, trademarks, logos or other brand features.
               </p>
               
               <h3 className="text-xl font-medium mb-2">4.2 User Content</h3>
               <p className="mb-3">
-                You retain all rights to any Content you submit, post, or display on or through the Services. By submitting, posting, or displaying Content on or through the Services, you grant us a worldwide, non-exclusive, royalty-free license (with the right to sublicense) to use, copy, reproduce, process, adapt, modify, publish, transmit, display and distribute such Content in any media or distribution methods.
+                You retain all rights to any Content you submit through the Services. By submitting Content, you grant us a worldwide, non-exclusive, royalty-free license (with the right to sublicense) to use, copy, reproduce, process, adapt, modify, publish, transmit, display and distribute such Content in any media or distribution methods.
               </p>
               <p className="mb-3">
                 You represent and warrant that:
               </p>
               <ul className="list-disc pl-6 space-y-1">
-                <li>You own or control all rights in and to the User Content and have the right to grant the license granted above</li>
-                <li>All of your User Content does and will comply with these Terms</li>
+                <li>You own or control all rights in and to the User Content</li>
+                <li>All of your User Content complies with these Terms</li>
                 <li>User Content is not false, inaccurate, or misleading</li>
                 <li>User Content does not violate any law or regulation</li>
                 <li>User Content does not infringe any Intellectual Property Rights of any third party</li>
