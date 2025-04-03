@@ -10,7 +10,7 @@ declare global {
 }
 
 // Google Analytics Measurement ID
-const GA_MEASUREMENT_ID = 'G-XXXXXXXXXX'; // Replace with your actual Google Analytics Measurement ID
+const GA_MEASUREMENT_ID = 'G-RP1R37XLFK'; // Real Google Analytics Measurement ID
 
 const GoogleAnalytics = () => {
   const location = useLocation();
