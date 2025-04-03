@@ -75,7 +75,7 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-6">Contact Us</h3>
             <ul className="space-y-3 text-gray-400">
-              <li>Lucknow, Uttar Pradesh, India</li>
+              <li>LGF 24, Gomti Plaza, Patrakarpuram, Gomti Nagar, Lucknow, UP 226010</li>
               <li>
                 <a href="mailto:mayank@paripathsolutions.com" className="hover:text-white transition-colors duration-300">
                   mayank@paripathsolutions.com
@@ -88,7 +88,12 @@ const Footer = () => {
               </li>
               <li>
                 <a href="tel:+918177063899" className="hover:text-white transition-colors duration-300">
-                  +91 8177063899
+                  +91 8177 063 899
+                </a>
+              </li>
+              <li>
+                <a href="tel:+919044472544" className="hover:text-white transition-colors duration-300">
+                  +91 9044 472 544
                 </a>
               </li>
               <li>

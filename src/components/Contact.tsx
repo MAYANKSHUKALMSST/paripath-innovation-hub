@@ -1,4 +1,3 @@
-
 import AnimatedSection from './AnimatedSection';
 import { MapPin, Mail, Phone, Clock } from 'lucide-react';
 import { Input } from './ui/input';
@@ -152,8 +151,12 @@ const Contact = () => {
               <div className="space-y-4">
                 <ContactCard 
                   icon={MapPin} 
-                  title="Office Location" 
-                  value="Lucknow, Uttar Pradesh, India" 
+                  title="Office Address" 
+                  value={
+                    <div className="space-y-1">
+                      <p>LGF 24, Gomti Plaza, Patrakarpuram, Gomti Nagar, Lucknow, UP 226010</p>
+                    </div>
+                  }
                 />
                 <ContactCard 
                   icon={Mail} 
@@ -168,7 +171,12 @@ const Contact = () => {
                 <ContactCard 
                   icon={Phone} 
                   title="Phone Number" 
-                  value={<a href="tel:+918177063899" className="text-primary hover:underline">+91 8177 063 899</a>} 
+                  value={
+                    <div className="space-y-1">
+                      <a href="tel:+918177063899" className="text-primary hover:underline block">+91 8177 063 899</a>
+                      <a href="tel:+919044472544" className="text-primary hover:underline block">+91 9044 472 544</a>
+                    </div>
+                  }
                 />
                 <ContactCard 
                   icon={Clock} 
